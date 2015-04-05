@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Usuarios y amistades</title>
+	<link rel="stylesheet" type="text/css" href="pagina.css"/>
+	<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css'/>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="mapa.js"></script>
+</head>
+
+<body onload="loadMap2()">
+	<div class="tabs">
+		<a href="tab1.html" class="tab">Informacion General</a>
+		<a href="#" class="tab active">Explorar usuario y amistades</a>
+	</div>
+	<div id="tab-content">
+		<div class="left-bar">
+			<form action="javascript:form1()">
+				<h1>Buscar usuario</h1>
+				<select id="usuarios">
+					<script>
+					select = document.getElementById("usuarios");
+					$.getJSON("input3.json", function(json) {
+						for ( i = 0; i < json.usuarios.length; i += 1 ) {
+    						option = document.createElement( "option" );    
+    						option.value = i
+    						option.text = option.name = json.usuarios[i]["id"];
+    						select.add( option );
+						}	
+					});
+					</script>
+
+				</select>
+				<input type="checkbox" name="friends" class="checkbox"> Mostrar amigos<br>
+				<input type="submit" name="busqueda" value="Buscar">
+			</form>
+			<form action="javascript:form2()">
+				<h1>Filtros</h1>
+				<h2>Entre las fechas:</h2>
+				<input type="mont" >
+				<input type="month" >
+				<input type="submit" value="Buscar">
+			</form>
+		</div>
+		<div id="map"></div>
+	</div>
+</body>
+

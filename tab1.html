@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+
+<head>
+	<title>Informacion General</title>
+	<link rel="stylesheet" type="text/css" href="pagina.css">
+	<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css'/>	
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="mapa.js"></script>
+	</script>
+</head>
+
+<html>
+	<body onload="loadMap1()">
+		<div class="tabs">
+			<a href="#" class="tab active">Informacion General</a>
+			<a href="tab2.html" class="tab">Explorar usuario y amistades</a>
+		</div>
+		<div id="tab-content">
+			<h1>Resumen del Dataset</h1>
+			<script>
+			$.getJSON("datos_usuarios.json", function(json) {
+    			document.getElementById("cant_usuarios").innerHTML = json.cant_usuarios;
+    			document.getElementById("cant_locations").innerHTML = json.cant_locations;
+    			document.getElementById("cant_checkins").innerHTML = json.cant_checkins;
+    			document.getElementById("amigos_por_usuario").innerHTML = json.amigos_por_usuario;
+    			document.getElementById("checkins_por_usuario").innerHTML = json.checkins_por_usuario;
+    			document.getElementById("checkins_por_location").innerHTML = json.checkins_por_location;
+			});
+			</script>
+			<div class="entry" id="cant_usuarios"></div>
+			<div class="entry" id="cant_locations"></div>
+			<div class="entry" id="cant_checkins"></div>
+			<div class="entry" id="amigos_por_usuario"></div>
+			<div class="entry" id="checkins_por_usuario"></div>
+			<div class="entry" id="checkins_por_location"></div>
+			
+			<h1>Algunos usuarios</h1>
+			<div id="map" class="tab1"></div>
+		</div>
+	</body>
+</html>
