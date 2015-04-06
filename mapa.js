@@ -31,9 +31,8 @@ function loadMap2() {
 
 function form1() {
 	var e = document.getElementById("usuarios");
+	var check = jQuery("#checkbox").prop("checked");
 	var usuario = parseInt(e.options[e.selectedIndex].value);
-	var x=$("friends").is(":checked");
-	alert(x)
 
 	var greenIcon = L.icon({
     	iconUrl: "green-marker.png",
@@ -62,16 +61,17 @@ function form1() {
 	});	
 
 
-    var length = markers.length
-
-	$.getJSON("input3.json", function(json) {
+    if (check){
+    	$.getJSON("input3.json", function(json) {
     	for (i = 0; i < json.usuarios[usuario]["amigos"].length; i++) {
     		for (j = 0; j < json.usuarios[usuario]["amigos"][i]["check-ins"].length; j++) {
     			markers.push(L.marker([json.usuarios[usuario]["amigos"][i]["check-ins"][j].latitude, json.usuarios[usuario]["amigos"][i]["check-ins"][j].longitude]).addTo(map).setIcon(greenIcon));
-    		}
-		}
+    			}
+			}
 
-	});
+		})
+	};
+
 	
 	
 
