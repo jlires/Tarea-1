@@ -99,7 +99,7 @@ function form1() {
 }
 
 function form2() {
-	alert("form2");
+	alert("Aun no disponible, lo siento.");
 }
 
 
