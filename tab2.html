@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 
 <head>
+	<meta charset="utf-8"/>
 	<title>Usuarios y amistades</title>
 	<link rel="stylesheet" type="text/css" href="pagina.css"/>
 	<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css'/>
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://dynatree.googlecode.com/svn/trunk/jquery/jquery-ui.custom.js"></script>
+	<script src="jQRangeSlider-min.js"></script>
 	<script type="text/javascript" src="mapa.js"></script>
 </head>
 
@@ -38,8 +41,21 @@
 			<form action="javascript:form2()">
 				<h1>Filtros</h1>
 				<h2>Entre las fechas:</h2>
-				<input type="mont" >
-				<input type="month" >
+				<div id="slider"></div>
+    			<script>
+    			$("#slider").dateRangeSlider({
+    				range: {min: new Date(2012, 0, 1)}, //use minimum range
+    				bounds: {
+           				min: new Date(2012, 0, 1),
+           				max: new Date(2012, 11, 31, 12, 59, 59)
+            			},
+    				defaultValues: {
+           				min: new Date(2012, 1, 10),
+           				max: new Date(2012, 4, 22)
+            			}
+
+      			});
+    			</script>
 				<input type="submit" value="Buscar">
 			</form>
 		</div>
